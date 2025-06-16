@@ -1,15 +1,17 @@
 import type { Metadata } from "next";
-import { Geist, Geist_Mono } from "next/font/google";
+import { Inter, Inter_Tight } from "next/font/google"; // Import Inter_Tight
 import "./globals.css";
+import Footer from "@/components/Footer"; // Import the Footer component
 
-const geistSans = Geist({
-  variable: "--font-geist-sans",
+const inter = Inter({
+  variable: "--font-inter",
   subsets: ["latin"],
 });
 
-const geistMono = Geist_Mono({
-  variable: "--font-geist-mono",
+const interTight = Inter_Tight({ // Initialize Inter_Tight
+  variable: "--font-inter-tight",
   subsets: ["latin"],
+  weight: ["400", "500", "600", "700", "800"] // Specify weights if needed, adjust as per your design
 });
 
 export const metadata: Metadata = {
@@ -24,10 +26,10 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
-      <body
-        className={`${geistSans.variable} ${geistMono.variable} antialiased`}
-      >
+      {/* Add interTight.variable to the body className */}
+      <body className={`${inter.variable} ${interTight.variable} antialiased`}>
         {children}
+        <Footer /> {/* Add the Footer component here */}
       </body>
     </html>
   );
