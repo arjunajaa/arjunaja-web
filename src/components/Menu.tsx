@@ -10,10 +10,12 @@ const Menu: React.FC<MenuProps> = ({ onClose }) => {
     // Smooth scroll will be triggered after splash screen in page.tsx
   };
 
-  const handleSocialLinkClick = (event: React.MouseEvent<HTMLAnchorElement>) => {
-    event.preventDefault();
-    // Add navigation logic here if needed in the future
-  };
+  const socialLinks = [
+    { name: 'INSTAGRAM', url: 'https://instagram.com/arjunaja_' },
+    { name: 'WHATSAPP', url: 'https://wa.me/6282111555860' },
+    { name: 'GITHUB', url: 'https://github.com/arjunajaa' },
+    { name: 'EMAIL', url: 'mailto:aarjunaja@gmail.com' },
+  ];
 
   return (
     <div className="fixed inset-0 bg-black bg-opacity-95 z-40 flex flex-col justify-between p-6 text-white pt-20 md:pt-24">
@@ -48,9 +50,15 @@ const Menu: React.FC<MenuProps> = ({ onClose }) => {
           <div>
             <p className="text-sm text-gray-400 mb-2">Follow me.</p>
             <div className="flex space-x-4">
-              {['INSTAGRAM', 'BEHANCE', 'TWITTER', 'DRIBBBLE'].map((social) => (
-                <a key={social} href="#" onClick={handleSocialLinkClick} className="text-sm hover:underline flex items-center">
-                  {social}
+              {socialLinks.map((social) => (
+                <a 
+                  key={social.name} 
+                  href={social.url} 
+                  target="_blank" // Open in new tab
+                  rel="noopener noreferrer" // Security measure for target="_blank"
+                  className="text-sm hover:underline flex items-center"
+                >
+                  {social.name}
                   <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor" className="w-3 h-3 ml-1">
                     <path strokeLinecap="round" strokeLinejoin="round" d="M4.5 19.5l15-15m0 0H8.25m11.25 0v11.25" />
                   </svg>
